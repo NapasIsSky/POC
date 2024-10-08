@@ -1,0 +1,25 @@
+services:
+  mock_source:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: sourcedb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+# docker exec -it source-mock_source-1 mysql -uuser -puserpassword sourcedb
+# CREATE TABLE employees (
+#   id INT PRIMARY KEY AUTO_INCREMENT,
+#   name VARCHAR(100),
+#   position VARCHAR(100),
+#   salary DECIMAL(10,2)
+# );
+
+# INSERT INTO employees (name, position, salary) VALUES
+# ('Alice', 'Manager', 7000.50),
+# ('Bob', 'Developer', 5000.00),
+# ('Charlie', 'Designer', 4000.00);
+
