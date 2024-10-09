@@ -1,0 +1,16 @@
+# Airflow docker-compose.yml
+services:
+  webserver:
+    environment:
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres-db:5432/airflow
+
+  scheduler:
+    environment:
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres-db:5432/airflow
+
+  networks:
+    - poc-airflow-liquibase-destination
+
+networks:
+  poc-airflow-liquibase-destination:
+    external: true
