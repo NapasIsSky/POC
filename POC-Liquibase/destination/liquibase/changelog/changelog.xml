@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    
+    <changeSet author="napas" id="1::loadData" labels="data">
+        <loadData encoding="UTF-8"
+            file="employees_202410161311.csv"
+            separator=","
+            tableName="employees">
+            <column header="id"
+                name="emp_id"
+                type="NUMERIC" />
+            <column header="name"
+                name="name"
+                type="STRING"/>
+            <column header="position"
+                name="job_title"
+                type="STRING"/>
+            <column header="salary"
+                name="monthly_salary"
+                type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

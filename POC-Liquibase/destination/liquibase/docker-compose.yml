@@ -1,0 +1,18 @@
+services:
+  liquibase:
+    build:
+      context: .
+      dockerfile: Dockerfile # ระบุ Dockerfile ที่สร้างขึ้นเอง
+    volumes:
+      - ./changelog:/liquibase/changelog # Mapping โฟลเดอร์ changelog
+      - ./changelog/liquibase.docker.properties:/liquibase/liquibase.docker.properties # Mapping ไฟล์ properties
+    depends_on:
+      postgres:
+        condition: service_healthy # ให้ liquibase รอจนกว่า PostgreSQL พร้อมใช้งาน
+    command: --defaults-file=/liquibase/liquibase.docker.properties update # ระบุไฟล์ changelog ที่ต้องใช้
+    networks:
+      - poc-liquibase-destination
+
+networks:
+  poc-liquibase-destination:
+    external: true
