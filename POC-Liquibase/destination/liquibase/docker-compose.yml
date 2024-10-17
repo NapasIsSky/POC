@@ -6,10 +6,9 @@ services:
     volumes:
       - ./changelog:/liquibase/changelog # Mapping โฟลเดอร์ changelog
       - ./changelog/liquibase.docker.properties:/liquibase/liquibase.docker.properties # Mapping ไฟล์ properties
-    depends_on:
-      postgres:
-        condition: service_healthy # ให้ liquibase รอจนกว่า PostgreSQL พร้อมใช้งาน
-    command: --defaults-file=/liquibase/liquibase.docker.properties update # ระบุไฟล์ changelog ที่ต้องใช้
+    command: --defaults-file=/liquibase/liquibase.docker.properties update
+    # depends_on:
+    #   - postgres
     networks:
       - poc-liquibase-destination
 

@@ -32,7 +32,7 @@ docker network inspect poc-liquibase-destination
 ```
 
 ```
-docker exec -it postgresql-postgres-1 psql -U user destinationdb
+docker exec -it postgres psql -U user destinationdb
 ```
 
 ```
@@ -46,5 +46,5 @@ monthly_salary BIGINT
 ```
 
 ```
-docker run --rm -v /Users/Napas/Documents/POC/POC-Liquibase/destination/liquibase/changelog:/liquibase/changelog liquibase/liquibase --defaults-file=/liquibase/changelog/liquibase.docker.properties update
+docker run --rm -v /Users/Napas/Documents/POC/POC-Liquibase/destination/liquibase/changelog:/liquibase/changelog liquibase/liquibase --defaults-file=/liquibase/changelog/liquibase.docker.properties update --changelog-file=changelog/changelog.xml
 ```

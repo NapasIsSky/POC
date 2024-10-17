@@ -32,7 +32,7 @@ docker network inspect poc-airflow-liquibase-destination
 ```
 
 ```
-docker exec -it postgresql-postgres-1 psql -U user destinationdb
+docker exec -it postgres psql -U user destinationdb
 ```
 
 ```
